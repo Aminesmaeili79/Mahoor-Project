@@ -64,22 +64,24 @@ export function Navbar() {
               />
             </Link>
 
-            {/* Navigation Links - Desktop */}
-            <div className="hidden md:flex items-center gap-8">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className={`transition-colors nav-link ${
-                    location.pathname === link.path
-                      ? 'nav-link-active'
-                      : 'text-gray-700'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
+            {/* Navigation Links - Desktop Only */}
+            {!isMobile && (
+              <div className="flex items-center gap-8">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className={`transition-colors nav-link ${
+                      location.pathname === link.path
+                        ? 'nav-link-active'
+                        : 'text-gray-700'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            )}
 
             {/* Icon Actions */}
             <div className="flex items-center gap-4">
