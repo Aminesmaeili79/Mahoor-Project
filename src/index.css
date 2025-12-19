@@ -1569,3 +1569,17 @@ body {
   syntax: "*";
   inherits: false
 }
+
+/* Custom brand colors for navbar */
+.nav-link-active {
+  color: #D97746;
+}
+
+.nav-link:hover {
+  color: #D97746;
+}
+
+/* Brand text color */
+.text-brand-orange {
+  color: #D97746;
+}

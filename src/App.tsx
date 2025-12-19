@@ -5,6 +5,7 @@ import { Home } from './pages/Home';
 import { Categories } from './pages/Categories';
 import { CategoryDetail } from './pages/CategoryDetail';
 import { OutfitDetail } from './pages/OutfitDetail';
+import { ProductDetail } from './pages/ProductDetail';
 import { AIStyling } from './pages/AIStyling';
 import { Pricing } from './pages/Pricing';
 import { MyWardrobe } from './pages/MyWardrobe';
@@ -21,6 +22,7 @@ export default function App() {
             <Route path="/categories" element={<Categories />} />
             <Route path="/category/:id" element={<CategoryDetail />} />
             <Route path="/outfit/:id" element={<OutfitDetail />} />
+            <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/ai-stylist" element={<AIStyling />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/my-wardrobe" element={<MyWardrobe />} />
@@ -32,3 +34,4 @@ export default function App() {
     </Router>
   );
 }
+

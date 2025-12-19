@@ -27,10 +27,43 @@ export function Home() {
     },
   ];
 
+  const curatedProducts = [
+    {
+      id: 'tailored-blazer',
+      name: 'Tailored Blazer',
+      image: '/TAILORED BLAZER 1.JPG',
+    },
+    {
+      id: 'silk-blouse',
+      name: 'Silk Blouse',
+      image: '/SILK BLOUSE 1.JPG',
+    },
+    {
+      id: 'designer-trousers',
+      name: 'Designer Trousers',
+      image: '/DESIGNER TROUSERS 1.JPG',
+    },
+    {
+      id: 'leather-shoes',
+      name: 'Leather Shoes',
+      image: '/LEATHER SHOES 1.jpg',
+    },
+    {
+      id: 'structured-bag',
+      name: 'Structured Bag',
+      image: '/STRUCTURED BAG 1.JPG',
+    },
+    {
+      id: 'statement-glasses',
+      name: 'Statement Glasses',
+      image: '/STATMENT GLASSES 1.JPG',
+    },
+  ];
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-purple-600 to-orange-500 text-white py-20">
+      <section className="relative bg-gradient-to-br from-[#4A2847] to-[#D97746] text-white py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-5xl md:text-6xl mb-6">
@@ -49,7 +82,7 @@ export function Home() {
                   placeholder="Search by occasion or style..."
                   className="flex-1 py-3 px-2 text-gray-900 outline-none"
                 />
-                <button className="bg-gradient-to-r from-purple-600 to-orange-500 text-white px-6 py-3 rounded-xl hover:shadow-lg transition-shadow">
+                <button className="bg-gradient-to-r from-[#4A2847] to-[#D97746] text-white px-6 py-3 rounded-xl hover:shadow-lg transition-shadow">
                   Search
                 </button>
               </div>
@@ -102,19 +135,20 @@ export function Home() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[1, 2, 3, 4, 5, 6].map((index) => (
+          {curatedProducts.map((product) => (
             <Link
-              key={index}
-              to="/outfit/1"
-              className="group relative aspect-[3/4] rounded-2xl overflow-hidden bg-gray-100 border-2 border-dashed border-gray-300 hover:border-purple-600 transition-all"
+              key={product.id}
+              to={`/product/${product.id}`}
+              className="group relative aspect-[3/4] rounded-2xl overflow-hidden bg-gray-100 hover:shadow-xl transition-all"
             >
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center p-6">
-                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-sm">
-                    <span className="text-2xl">👔</span>
-                  </div>
-                  <p className="text-gray-500 text-sm">Insert Fashion Image</p>
-                  <p className="text-gray-400 text-xs mt-1">Portrait 3:4 ratio</p>
+              <img
+                src={product.image}
+                alt={product.name}
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent">
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <h3 className="text-xl font-medium">{product.name}</h3>
                 </div>
               </div>
             </Link>
@@ -132,7 +166,7 @@ export function Home() {
           <div className="flex gap-4 justify-center">
             <Link
               to="/ai-stylist"
-              className="bg-white text-purple-600 px-8 py-4 rounded-xl hover:shadow-xl transition-shadow"
+              className="bg-white text-brand-orange px-8 py-4 rounded-xl hover:shadow-xl transition-shadow"
             >
               Experience AI Styling
             </Link>

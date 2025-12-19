@@ -4,43 +4,105 @@ import { ArrowLeft } from 'lucide-react';
 export function CategoryDetail() {
   const { id } = useParams();
 
-  const categoryInfo: Record<string, { name: string; description: string; dressCode: string }> = {
+  const categoryInfo: Record<string, { name: string; description: string; dressCode: string; imagePrefix: string }> = {
     'art-exhibition': {
       name: 'Art Exhibition',
       description: 'Sophisticated Cultural Elegance',
       dressCode:
         'Art exhibitions demand refined aesthetics and intellectual sophistication. Embrace architectural silhouettes, monochromatic palettes, and statement accessories that reflect your appreciation for artistry. Think structured blazers, contemporary cuts, and distinctive pieces that demonstrate cultural awareness and personal style confidence.',
+      imagePrefix: 'ART EXHIBITION',
     },
     'business-meeting': {
       name: 'Business Meeting',
       description: 'Executive Power Dressing',
       dressCode:
         'Professional excellence requires impeccable tailoring and polished presentation. Invest in well-constructed suits, premium fabrics, and timeless accessories. Maintain a palette of sophisticated neutrals—navy, charcoal, crisp white—and ensure every element projects authority, competence, and refined taste.',
+      imagePrefix: 'business meeting',
     },
     'dinner-date': {
       name: 'Dinner Date',
       description: 'Refined Romantic Allure',
       dressCode:
         'Evening romance calls for elevated elegance with subtle sensuality. Choose flattering silhouettes in luxe fabrics, soft color palettes, and thoughtful details. Whether it\'s a sophisticated dress or perfectly tailored separates, select pieces that make you feel confident, attractive, and authentically yourself.',
+      imagePrefix: 'DINNER DATE',
     },
     'travel': {
       name: 'Travel',
       description: 'Effortless Global Style',
       dressCode:
         'Travel wardrobe excellence combines versatility with understated luxury. Select wrinkle-resistant fabrics, coordinated neutrals, and pieces that transition seamlessly from day to evening. Prioritize comfort without compromising style—think elevated basics, quality layering pieces, and practical yet chic accessories.',
+      imagePrefix: 'travel',
     },
-    'summer-party': {
-      name: 'Summer Party',
+    'pool-party': {
+      name: 'Pool Party',
       description: 'Vibrant Seasonal Celebration',
       dressCode:
-        'Summer celebrations embrace joyful expression and effortless sophistication. Choose breathable fabrics, vibrant hues, and flowing silhouettes. Incorporate playful patterns, statement accessories, and comfortable yet stylish footwear. Let your ensemble radiate confidence and seasonal optimism.',
+        'Pool parties embrace joyful expression and effortless sophistication. Choose breathable fabrics, vibrant hues, and flowing silhouettes. Incorporate playful patterns, statement accessories, and comfortable yet stylish footwear. Let your ensemble radiate confidence and seasonal optimism.',
+      imagePrefix: 'pool party',
     },
-    'winter-casual': {
-      name: 'Winter Casual',
-      description: 'Cozy Contemporary Comfort',
+    'hard-techno': {
+      name: 'Hard Techno',
+      description: 'Dark and Intense',
       dressCode:
-        'Winter casual style merges warmth with modern aesthetics. Layer luxurious knits, structured outerwear, and quality denim. Embrace rich textures—cashmere, wool, leather—and sophisticated color palettes. Create looks that are simultaneously comfortable, practical, and effortlessly chic.',
+        'Hard techno style embraces the underground aesthetic with dark, edgy elements. Think black leather, industrial accessories, and bold statement pieces. Combine functionality with fashion—comfortable for long nights dancing while maintaining an unmistakable presence on the dance floor.',
+      imagePrefix: 'hard techno',
     },
+  };
+
+  // Image path mapping to handle inconsistent file naming in public folder
+  const getImagePath = (categoryId: string, imageNum: number): string => {
+    const imageMap: Record<string, string[]> = {
+      'art-exhibition': [
+        '/ART EXHIBITION 1.jpg',
+        '/ART EXHIBITION 2.jpg',
+        '/ART EXHIBITON 3.jpg', // Note: typo in original filename
+        '/ART EXHIBITION 4.jpg',
+        '/ART EXHIBITION 5.jpg',
+        '/art exhibition 6.jpg',
+      ],
+      'business-meeting': [
+        '/business meeting 1.jpg',
+        '/business meeting 2.jpg',
+        '/businnes meeting 3.jpg', // Note: typo in original filename
+        '/business meeting 4.jpg',
+        '/business meeting 5.jpg',
+        '/business meeting 6.jpg',
+      ],
+      'dinner-date': [
+        '/DINNER DATE 1.jpg',
+        '/DINNER DATE 2.jpg',
+        '/DINNER DATE 3.jpg',
+        '/DINNER DATE 4.jpg',
+        '/DINNER DATE 5.jpg',
+        '/dinner date 6.jpg',
+      ],
+      'travel': [
+        '/travel 1.jpg',
+        '/travel 2.jpg',
+        '/travel 3.jpg',
+        '/travel 4.jpg',
+        '/travel 5.jpg',
+        '/travel 6.jpg',
+      ],
+      'pool-party': [
+        '/pool party 1.jpg',
+        '/pool party 2.jpg',
+        '/pool party 3.jpg',
+        '/pool party 4.jpg',
+        '/pool party 5.jpg',
+        '/pool party 6.jpg',
+      ],
+      'hard-techno': [
+        '/hard techno 1.jpg',
+        '/hard techno 2.jpg',
+        '/hard techno 3.jpg',
+        '/hard techno 4.jpg',
+        '/hard techno 5.jpg',
+        '/hard techno 6.jpg',
+      ],
+    };
+    
+    return imageMap[categoryId]?.[imageNum - 1] || '';
   };
 
   const category = categoryInfo[id || 'art-exhibition'] || categoryInfo['art-exhibition'];
@@ -80,17 +142,13 @@ export function CategoryDetail() {
                 <div key={outfitId} className="group">
                   <Link
                     to={`/outfit/${outfitId}`}
-                    className="block relative aspect-[3/4] rounded-2xl overflow-hidden bg-gray-100 border-2 border-dashed border-gray-300 hover:border-[#4A2847] mb-4 transition-all"
+                    className="block relative aspect-[3/4] rounded-2xl overflow-hidden bg-gray-100 hover:shadow-xl mb-4 transition-all"
                   >
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center p-4">
-                        <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-sm">
-                          <span className="text-2xl">👔</span>
-                        </div>
-                        <p className="text-gray-500 text-sm">Insert Outfit Image</p>
-                        <p className="text-gray-400 text-xs mt-1">Portrait 3:4 ratio</p>
-                      </div>
-                    </div>
+                    <img
+                      src={getImagePath(id || 'art-exhibition', outfitId)}
+                      alt={`${category.name} Look ${outfitId}`}
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
                   </Link>
                   
                   <div className="flex flex-wrap gap-2 mb-3">

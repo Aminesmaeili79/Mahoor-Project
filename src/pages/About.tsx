@@ -141,7 +141,7 @@ export function About() {
             Begin your personalized style journey with Stylect
             today
           </p>
-          <button className="bg-white text-purple-600 px-8 py-4 rounded-xl hover:shadow-xl transition-shadow">
+          <button className="bg-white text-brand-orange px-8 py-4 rounded-xl hover:shadow-xl transition-shadow">
             Start Free Experience
           </button>
         </div>

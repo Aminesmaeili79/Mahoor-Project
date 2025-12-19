@@ -10,18 +10,21 @@ export function MyWardrobe() {
       name: 'Gallery Opening Ensemble',
       category: 'Art Exhibition',
       savedDate: 'Dec 10, 2025',
+      image: '/ART EXHIBITION 1.jpg',
     },
     {
       id: 2,
       name: 'Refined Evening Look',
       category: 'Dinner Date',
       savedDate: 'Dec 8, 2025',
+      image: '/DINNER DATE 1.jpg',
     },
     {
       id: 3,
       name: 'Executive Power Suit',
       category: 'Business Meeting',
       savedDate: 'Dec 5, 2025',
+      image: '/business meeting 1.jpg',
     },
   ];
 
@@ -89,15 +92,12 @@ export function MyWardrobe() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {savedOutfits.map((outfit) => (
               <div key={outfit.id} className="group bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="relative aspect-[3/4] bg-gray-100 border-2 border-dashed border-gray-300">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center p-6">
-                      <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-sm">
-                        <span className="text-2xl">👔</span>
-                      </div>
-                      <p className="text-gray-400 text-sm">Insert Outfit Image</p>
-                    </div>
-                  </div>
+                <div className="relative aspect-[3/4] bg-gray-100 overflow-hidden">
+                  <img
+                    src={outfit.image}
+                    alt={outfit.name}
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
                 <div className="p-4">
                   <h3 className="text-lg mb-1 text-gray-900">{outfit.name}</h3>
@@ -111,10 +111,12 @@ export function MyWardrobe() {
           <div className="space-y-4">
             {savedOutfits.map((outfit) => (
               <div key={outfit.id} className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-shadow flex gap-6">
-                <div className="w-32 h-32 flex-shrink-0 rounded-xl overflow-hidden bg-gray-100 border-2 border-dashed border-gray-300">
-                  <div className="w-full h-full flex items-center justify-center">
-                    <span className="text-2xl">👔</span>
-                  </div>
+                <div className="w-32 h-32 flex-shrink-0 rounded-xl overflow-hidden bg-gray-100">
+                  <img
+                    src={outfit.image}
+                    alt={outfit.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl mb-2 text-gray-900">{outfit.name}</h3>

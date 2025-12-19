@@ -26,7 +26,7 @@ export function Pricing() {
       price: '$9.99',
       period: 'per month',
       icon: Crown,
-      iconColor: 'from-purple-600 to-orange-500',
+      iconColor: 'from-[#4A2847] to-[#D97746]',
       popular: true,
       features: [
         { name: 'Unlimited style categories', included: true },
@@ -63,7 +63,7 @@ export function Pricing() {
               key={plan.name}
               className={`relative bg-white border rounded-3xl p-8 ${
                 plan.popular
-                  ? 'border-purple-600 shadow-xl'
+                  ? 'border-[#D97746] shadow-xl'
                   : 'border-gray-200'
               }`}
             >

@@ -44,7 +44,7 @@ export function AIStyling() {
               </p>
             </div>
             <div className="text-center">
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-orange-500 rounded-full flex items-center justify-center text-white mx-auto mb-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-[#4A2847] to-[#D97746] rounded-full flex items-center justify-center text-white mx-auto mb-4">
                 3
               </div>
               <h3 className="mb-2 text-gray-900">Curated Results</h3>
@@ -60,7 +60,7 @@ export function AIStyling() {
           {/* Premium Overlay */}
           <div className="absolute inset-0 bg-white/95 backdrop-blur-sm z-10 flex items-center justify-center">
             <div className="text-center max-w-md p-8">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#4A2847] to-[#D97746] rounded-full flex items-center justify-center mx-auto mb-4">
                 <Lock className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl mb-3 text-gray-900">Premium Intelligence</h3>
@@ -69,7 +69,7 @@ export function AIStyling() {
               </p>
               <Link
                 to="/pricing"
-                className="inline-block bg-gradient-to-r from-purple-600 to-orange-500 text-white px-8 py-4 rounded-xl hover:shadow-lg transition-shadow"
+                className="inline-block bg-gradient-to-r from-[#4A2847] to-[#D97746] text-white px-8 py-4 rounded-xl hover:shadow-lg transition-shadow"
               >
                 Upgrade to Premium
               </Link>

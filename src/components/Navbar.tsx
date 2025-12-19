@@ -33,10 +33,10 @@ export function Navbar() {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`transition-colors ${
+                className={`transition-colors nav-link ${
                   location.pathname === link.path
-                    ? 'text-purple-600'
-                    : 'text-gray-700 hover:text-purple-600'
+                    ? 'nav-link-active'
+                    : 'text-gray-700'
                 }`}
               >
                 {link.label}
