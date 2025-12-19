@@ -2,77 +2,107 @@ import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Heart, Share2, ShoppingBag } from 'lucide-react';
 
 export function OutfitDetail() {
-  const { id } = useParams();
+  const { categoryId, outfitId } = useParams();
 
-  const outfit = {
-    title: 'Sophisticated Evening Ensemble',
-    category: 'Art Exhibition',
-    description: 'A masterfully curated outfit that harmonizes modern elegance with artistic sophistication. This ensemble exemplifies refined taste for gallery openings, cultural events, and elevated gatherings.',
+  // Category info for display
+  const categoryInfo: Record<string, { name: string; description: string }> = {
+    'art-exhibition': { name: 'Art Exhibition', description: 'Sophisticated Cultural Elegance' },
+    'business-meeting': { name: 'Business Meeting', description: 'Executive Power Dressing' },
+    'dinner-date': { name: 'Dinner Date', description: 'Refined Romantic Allure' },
+    'travel': { name: 'Travel', description: 'Effortless Global Style' },
+    'pool-party': { name: 'Pool Party', description: 'Vibrant Seasonal Celebration' },
+    'hard-techno': { name: 'Hard Techno', description: 'Dark and Intense' },
   };
 
-  const items = [
-    {
-      id: 1,
-      name: 'Tailored Blazer',
-      brand: 'Designer Brand',
-      price: '$299',
-    },
-    {
-      id: 2,
-      name: 'Silk Blouse',
-      brand: 'Designer Brand',
-      price: '$159',
-    },
-    {
-      id: 3,
-      name: 'Designer Trousers',
-      brand: 'Designer Brand',
-      price: '$189',
-    },
-    {
-      id: 4,
-      name: 'Leather Shoes',
-      brand: 'Designer Brand',
-      price: '$229',
-    },
-    {
-      id: 5,
-      name: 'Structured Bag',
-      brand: 'Designer Brand',
-      price: '$349',
-    },
-    {
-      id: 6,
-      name: 'Statement Glasses',
-      brand: 'Designer Brand',
-      price: '$179',
-    },
+  // Image path mapping (same as CategoryDetail)
+  const getImagePath = (catId: string, imgNum: number): string => {
+    const imageMap: Record<string, string[]> = {
+      'art-exhibition': [
+        '/ART EXHIBITION 1.jpg',
+        '/ART EXHIBITION 2.jpg',
+        '/ART EXHIBITON 3.jpg',
+        '/ART EXHIBITION 4.jpg',
+        '/ART EXHIBITION 5.jpg',
+        '/art exhibition 6.jpg',
+      ],
+      'business-meeting': [
+        '/business meeting 1.jpg',
+        '/business meeting 2.jpg',
+        '/businnes meeting 3.jpg',
+        '/business meeting 4.jpg',
+        '/business meeting 5.jpg',
+        '/business meeting 6.jpg',
+      ],
+      'dinner-date': [
+        '/DINNER DATE 1.jpg',
+        '/DINNER DATE 2.jpg',
+        '/DINNER DATE 3.jpg',
+        '/DINNER DATE 4.jpg',
+        '/DINNER DATE 5.jpg',
+        '/dinner date 6.jpg',
+      ],
+      'travel': [
+        '/travel 1.jpg',
+        '/travel 2.jpg',
+        '/travel 3.jpg',
+        '/travel 4.jpg',
+        '/travel 5.jpg',
+        '/travel 6.jpg',
+      ],
+      'pool-party': [
+        '/pool party 1.jpg',
+        '/pool party 2.jpg',
+        '/pool party 3.jpg',
+        '/pool party 4.jpg',
+        '/pool party 5.jpg',
+        '/pool party 6.jpg',
+      ],
+      'hard-techno': [
+        '/hard techno 1.jpg',
+        '/hard techno 2.jpg',
+        '/hard techno 3.jpg',
+        '/hard techno 4.jpg',
+        '/hard techno 5.jpg',
+        '/hard techno 6.jpg',
+      ],
+    };
+    return imageMap[catId]?.[imgNum - 1] || '';
+  };
+
+  // Complete the Look items - same for all outfit pages
+  const completeTheLook = [
+    { id: 'tailored-blazer', name: 'Tailored Blazer', brand: 'Designer Brand', price: '$299', image: '/TAILORED BLAZER 1.JPG' },
+    { id: 'silk-blouse', name: 'Silk Blouse', brand: 'Designer Brand', price: '$159', image: '/SILK BLOUSE 1.JPG' },
+    { id: 'designer-trousers', name: 'Designer Trousers', brand: 'Designer Brand', price: '$189', image: '/DESIGNER TROUSERS 1.JPG' },
+    { id: 'leather-shoes', name: 'Leather Shoes', brand: 'Designer Brand', price: '$229', image: '/LEATHER SHOES 1.jpg' },
+    { id: 'structured-bag', name: 'Structured Bag', brand: 'Designer Brand', price: '$349', image: '/STRUCTURED BAG 1.JPG' },
+    { id: 'statement-glasses', name: 'Statement Glasses', brand: 'Designer Brand', price: '$179', image: '/STATMENT GLASSES 1.JPG' },
   ];
+
+  const category = categoryInfo[categoryId || 'art-exhibition'] || categoryInfo['art-exhibition'];
+  const outfitNumber = parseInt(outfitId || '1', 10);
+  const outfitImage = getImagePath(categoryId || 'art-exhibition', outfitNumber);
 
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-6 py-8">
         <Link
-          to="/categories"
+          to={`/category/${categoryId}`}
           className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
-          Back to Categories
+          Back to {category.name}
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
-          {/* Left: Main Outfit Image Placeholder */}
+          {/* Left: Main Outfit Image */}
           <div>
-            <div className="relative aspect-[3/4] rounded-3xl overflow-hidden bg-gray-100 border-2 border-dashed border-gray-300 mb-4">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
-                    <span className="text-4xl">👔</span>
-                  </div>
-                  <p className="text-gray-500 text-lg">Insert Full Outfit Image</p>
-                  <p className="text-gray-400 text-sm mt-2">Portrait 3:4 ratio recommended</p>
-                </div>
-              </div>
+            <div className="relative aspect-[3/4] rounded-3xl overflow-hidden bg-gray-100 mb-4">
+              <img
+                src={outfitImage}
+                alt={`${category.name} Look ${outfitNumber}`}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
             </div>
             <div className="flex gap-3">
               <button className="flex-1 bg-gradient-to-r from-[#4A2847] to-[#D97746] text-white py-4 rounded-xl hover:shadow-lg transition-shadow flex items-center justify-center gap-2">
@@ -88,11 +118,14 @@ export function OutfitDetail() {
           {/* Right: Outfit Details */}
           <div>
             <div className="bg-white rounded-3xl p-8 border border-gray-200">
-              <div className="inline-block px-4 py-2 bg-gradient-to-r from-purple-600 to-orange-500 text-white rounded-full text-sm mb-4">
-                {outfit.category}
+              <div className="inline-block px-4 py-2 bg-gradient-to-r from-[#4A2847] to-[#D97746] text-white rounded-full text-sm mb-4">
+                {category.name}
               </div>
-              <h1 className="text-4xl mb-4 text-gray-900">{outfit.title}</h1>
-              <p className="text-gray-600 text-lg mb-8">{outfit.description}</p>
+              <h1 className="text-4xl mb-4 text-gray-900">{category.name} Look {outfitNumber}</h1>
+              <p className="text-gray-600 text-lg mb-8">
+                A masterfully curated outfit that embodies {category.description.toLowerCase()}. 
+                This ensemble exemplifies refined taste and personal style confidence.
+              </p>
 
               <div className="border-t border-gray-200 pt-6">
                 <h2 className="text-2xl mb-4 text-gray-900">Styling Intelligence</h2>
@@ -115,33 +148,23 @@ export function OutfitDetail() {
           </div>
         </div>
 
-        {/* Item Breakdown */}
+        {/* Complete the Look */}
         <div className="bg-white rounded-3xl p-8 border border-gray-200">
           <h2 className="text-3xl mb-8 text-gray-900">Complete the Look</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {items.map((item) => (
-              <div key={item.id} className="group">
-                <div className="relative aspect-square rounded-2xl overflow-hidden bg-gray-100 border-2 border-dashed border-gray-300 hover:border-[#4A2847] mb-4 transition-all">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center p-4">
-                      <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-2 shadow-sm">
-                        <span className="text-xl">🛍️</span>
-                      </div>
-                      <p className="text-gray-400 text-xs">Insert Item Image</p>
-                    </div>
-                  </div>
+            {completeTheLook.map((item) => (
+              <Link key={item.id} to={`/product/${item.id}`} className="group block">
+                <div className="relative aspect-square rounded-2xl overflow-hidden bg-gray-100 mb-4">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
                 <h3 className="text-lg mb-1 text-gray-900">{item.name}</h3>
                 <p className="text-sm text-gray-600 mb-2">{item.brand}</p>
-                <p className="text-xl mb-4 text-gray-900">{item.price}</p>
-                <a
-                  href="#"
-                  className="block w-full bg-gray-900 text-white text-center py-3 rounded-xl hover:bg-gray-800 transition-colors flex items-center justify-center gap-2"
-                >
-                  <ShoppingBag className="w-4 h-4" />
-                  View Product
-                </a>
-              </div>
+                <p className="text-xl text-gray-900">{item.price}</p>
+              </Link>
             ))}
           </div>
         </div>

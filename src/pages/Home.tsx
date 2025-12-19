@@ -1,4 +1,4 @@
-import { Search, Sparkles, TrendingUp, Users } from 'lucide-react';
+import { Search, Sparkles, TrendingUp, Users, ShoppingBag } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export function Home() {
@@ -31,31 +31,43 @@ export function Home() {
     {
       id: 'tailored-blazer',
       name: 'Tailored Blazer',
+      brand: 'Designer Brand',
+      price: '$299',
       image: '/TAILORED BLAZER 1.JPG',
     },
     {
       id: 'silk-blouse',
       name: 'Silk Blouse',
+      brand: 'Designer Brand',
+      price: '$159',
       image: '/SILK BLOUSE 1.JPG',
     },
     {
       id: 'designer-trousers',
       name: 'Designer Trousers',
+      brand: 'Designer Brand',
+      price: '$189',
       image: '/DESIGNER TROUSERS 1.JPG',
     },
     {
       id: 'leather-shoes',
       name: 'Leather Shoes',
+      brand: 'Designer Brand',
+      price: '$229',
       image: '/LEATHER SHOES 1.jpg',
     },
     {
       id: 'structured-bag',
       name: 'Structured Bag',
+      brand: 'Designer Brand',
+      price: '$349',
       image: '/STRUCTURED BAG 1.JPG',
     },
     {
       id: 'statement-glasses',
       name: 'Statement Glasses',
+      brand: 'Designer Brand',
+      price: '$179',
       image: '/STATMENT GLASSES 1.JPG',
     },
   ];
@@ -139,18 +151,22 @@ export function Home() {
             <Link
               key={product.id}
               to={`/product/${product.id}`}
-              className="group relative aspect-[3/4] rounded-2xl overflow-hidden bg-gray-100 hover:shadow-xl transition-all"
+              className="group block"
             >
-              <img
-                src={product.image}
-                alt={product.name}
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent">
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <h3 className="text-xl font-medium">{product.name}</h3>
-                </div>
+              <div className="relative aspect-square rounded-2xl overflow-hidden bg-gray-100 mb-4">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
               </div>
+              <h3 className="text-lg mb-1 text-gray-900">{product.name}</h3>
+              <p className="text-sm text-gray-600 mb-2">{product.brand}</p>
+              <p className="text-xl mb-4 text-gray-900">{product.price}</p>
+              <span className="flex items-center justify-center gap-2 w-full bg-gray-900 text-white py-3 rounded-xl group-hover:bg-gray-800 transition-colors">
+                <ShoppingBag className="w-4 h-4" />
+                View Product
+              </span>
             </Link>
           ))}
         </div>

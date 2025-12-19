@@ -141,7 +141,7 @@ export function CategoryDetail() {
               {[1, 2, 3, 4, 5, 6].map((outfitId) => (
                 <div key={outfitId} className="group">
                   <Link
-                    to={`/outfit/${outfitId}`}
+                    to={`/outfit/${id}/${outfitId}`}
                     className="block relative aspect-[3/4] rounded-2xl overflow-hidden bg-gray-100 hover:shadow-xl mb-4 transition-all"
                   >
                     <img
@@ -163,8 +163,8 @@ export function CategoryDetail() {
                   </div>
 
                   <Link
-                    to={`/outfit/${outfitId}`}
-                    className="block w-full bg-gradient-to-r from-purple-600 to-orange-500 text-white text-center py-3 rounded-xl hover:shadow-lg transition-shadow"
+                    to={`/outfit/${id}/${outfitId}`}
+                    className="block w-full bg-gradient-to-r from-[#4A2847] to-[#D97746] text-white text-center py-3 rounded-xl hover:shadow-lg transition-shadow"
                   >
                     View Details
                   </Link>

@@ -99,7 +99,7 @@ export function ProductDetail() {
           {/* Right: Product Details */}
           <div>
             <div className="bg-white rounded-3xl p-8 border border-gray-200">
-              <div className="inline-block px-4 py-2 bg-gradient-to-r from-purple-600 to-orange-500 text-white rounded-full text-sm mb-4">
+              <div className="inline-block px-4 py-2 bg-gradient-to-br from-[#4A2847] to-[#D97746] text-white rounded-full text-sm mb-4">
                 Premium Collection
               </div>
               <h1 className="text-4xl mb-2 text-gray-900">{product.name}</h1>
